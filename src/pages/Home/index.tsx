@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { listProducts } from '../../redux/actionCreators/productActions';
 import { useTypedSelector } from '../../hooks/useTypeSelector';
 
@@ -16,7 +16,6 @@ const Home: React.FC = () => {
   const { products, error, loading } = useTypedSelector(
     (state) => state.products
   );
-  console.log(products);
 
   useEffect(() => {
     dispatch(listProducts());
