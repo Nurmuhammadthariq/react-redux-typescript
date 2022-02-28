@@ -5,6 +5,7 @@ export enum ActionType {
   PRODUCTS_LIST_FAIL = 'PRODUCTS_LIST_FAIL',
 }
 
+
 interface actionPending {
   type: ActionType.PRODUCTS_LIST_REQUEST;
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const client = new QueryClient();
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 ReactDOM.render(
-  <QueryClientProvider client={client}>
-    <App />
-  </QueryClientProvider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );

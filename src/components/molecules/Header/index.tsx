@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
-import { CartItemType } from '../../../App';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,16 +30,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-type Props = {
-  cartItems: CartItemType[];
-};
+type Props = {};
 
-const Header: React.FC<Props> = ({ cartItems }) => {
+const Header: React.FC<Props> = () => {
   const classes = useStyles();
   const menuId = 'primary-search-account-menu';
-
-  const getTotalItems = (items: CartItemType[]) =>
-    items.reduce((ack: number, item) => ack + item.amount, 0);
 
   return (
     <AppBar position="static">

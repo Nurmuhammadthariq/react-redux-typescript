@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useQuery } from 'react-query';
 // Components
 // import Item from './Item/Item';
@@ -27,12 +28,8 @@ export type CartItemType = {
   amount: number;
 };
 
-const getProducts = async (): Promise<CartItemType[]> =>
-  await (await fetch('https://fakestoreapi.com/products')).json();
-
 const App = () => {
   // const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
   // const { data, isLoading, error } = useQuery<CartItemType[]>(
   //   'products',
   //   getProducts
@@ -43,12 +40,12 @@ const App = () => {
   // if (error) return <div>Something went wrong ...</div>;
 
   return (
-    <>
+    <div>
       <Router>
-        <Header cartItems={cartItems} />
+        <Header />
         <Routes />
       </Router>
-    </>
+    </div>
   );
 };
 

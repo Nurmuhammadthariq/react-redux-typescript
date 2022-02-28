@@ -1,13 +1,13 @@
 import { Action, ActionType } from '../actionTypes/index';
 
-export interface Product {
+export type Product = {
   id: number;
   title: string;
   price: number;
   description: string;
   category: string;
   image: string;
-}
+};
 
 interface State {
   products: Product[];
@@ -41,8 +41,8 @@ const productListReducer = (
     case ActionType.PRODUCTS_LIST_FAIL:
       return {
         loading: false,
-        products: [],
         error: action.payload,
+        products: [],
       };
     default:
       return state;

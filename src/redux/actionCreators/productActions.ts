@@ -8,12 +8,19 @@ export const listProducts = () => {
       type: ActionType.PRODUCTS_LIST_REQUEST,
     });
     try {
-      const { data } = await api.get('products');
-      console.log(data);
+      const { data } = await api.get(
+        'https://fakestoreapi.com/products?limit=5'
+      );
+
       dispatch({
         type: ActionType.PRODUCTS_LIST_SUCCESS,
         payload: data,
       });
-    } catch (error) {}
+    } catch (err) {
+      dispatch({
+        type: ActionType.PRODUCTS_LIST_FAIL,
+        payload: 'error',
+      });
+    }
   };
 };
