@@ -1,34 +1,38 @@
-import React from 'react';
-// import { useQuery } from 'react-query';
-// import Drawer from '@material-ui/core/Drawer';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../../redux/actionCreators/productActions';
+import { useTypedSelector } from '../../hooks/useTypeSelector';
+
+import { Item } from '../../components';
 // import LinearProgress from '@material-ui/core/LinearProgress';
-// import Grid from '@material-ui/core/Grid';
-// import Badge from '@material-ui/core/Badge';
+import Grid from '@material-ui/core/Grid';
 
 // Styles
-// import { Wrapper, StyledButton } from '../../App.styles';
-
-// export type CartItemType = {
-//   id: number;
-//   category: string;
-//   description: string;
-//   image: string;
-//   price: number;
-//   title: string;
-//   amount: number;
-// };
-
-// const getProducts = async (): Promise<CartItemType[]> =>
-//   await (await fetch('https://fakestoreapi.com/products')).json();
+import { Wrapper } from '../../App.styles';
 
 const Home: React.FC = () => {
-  // const { data, isLoading, error } = useQuery<CartItemType[]>(
-  //   'products',
-  //   getProducts
-  // );
-  // console.log(data);
+  const dispatch = useDispatch();
 
-  return <div>Home</div>;
+  const { products, error, loading } = useTypedSelector(
+    (state) => state.products
+  );
+  console.log(products);
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
+
+  return (
+    <Wrapper>
+      <Grid container spacing={3}>
+        {products.map((product) => (
+          <Grid item key={product.id} xs={12} sm={4}>
+            <Item item={product} />
+          </Grid>
+        ))}
+      </Grid>
+    </Wrapper>
+  );
 };
 
 export default Home;

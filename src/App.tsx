@@ -20,12 +20,11 @@ import Routes from './routes';
 // Types
 export type CartItemType = {
   id: number;
-  category: string;
-  description: string;
-  image: string;
-  price: number;
   title: string;
-  amount: number;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
 };
 
 const App = () => {
