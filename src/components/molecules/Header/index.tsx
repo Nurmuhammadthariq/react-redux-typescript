@@ -2,11 +2,12 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Badge } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import { Link } from 'react-router-dom';
+
+import { CartItemType } from '../../../App';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,12 +32,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
-  CartOpen: () => void;
+  cartItems: CartItemType[];
 };
 
-const Header: React.FC<Props> = ({ CartOpen }) => {
+const Header: React.FC<Props> = ({ cartItems }) => {
   const classes = useStyles();
   const menuId = 'primary-search-account-menu';
+
+  const getTotalItems = (items: CartItemType[]) =>
+    items.reduce((ack: number, item) => ack + item.amount, 0);
 
   return (
     <AppBar position="static">
@@ -53,7 +57,9 @@ const Header: React.FC<Props> = ({ CartOpen }) => {
             aria-haspopup="true"
             color="inherit"
           >
-            <AddShoppingCartIcon />
+            <Badge>
+              <AddShoppingCartIcon />
+            </Badge>
           </IconButton>
         </div>
       </Toolbar>
