@@ -9,7 +9,7 @@ export const listProducts = () => {
     });
     try {
       const { data } = await api.get(
-        'https://fakestoreapi.com/products?limit=5'
+        'https://fakestoreapi.com/products?limit=10'
       );
 
       dispatch({

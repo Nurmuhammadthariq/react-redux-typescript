@@ -4,7 +4,7 @@ import { listProducts } from '../../redux/actionCreators/productActions';
 import { useTypedSelector } from '../../hooks/useTypeSelector';
 
 import { Item } from '../../components';
-// import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 
 // Styles
@@ -21,6 +21,8 @@ const Home: React.FC = () => {
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
+
+  if (loading) return <LinearProgress />;
 
   return (
     <Wrapper>

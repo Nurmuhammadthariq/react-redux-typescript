@@ -1,12 +1,13 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { IconButton, Badge } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,7 +42,9 @@ const Header: React.FC<Props> = () => {
       <CssBaseline />
       <Toolbar>
         <Typography variant="h4" className={classes.logo}>
-          Navbar
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            Navbar
+          </Link>
         </Typography>
         <div className={classes.navlinks}>
           <IconButton
@@ -49,11 +52,13 @@ const Header: React.FC<Props> = () => {
             aria-label="account of current user"
             aria-controls={menuId}
             aria-haspopup="true"
-            color="inherit"
+            color="primary"
           >
-            <Badge>
-              <AddShoppingCartIcon />
-            </Badge>
+            <Link to="/cart" style={{ color: 'white' }}>
+              <Badge>
+                <AddShoppingCartIcon />
+              </Badge>
+            </Link>
           </IconButton>
         </div>
       </Toolbar>

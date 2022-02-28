@@ -18,7 +18,7 @@ import Routes from './routes';
 // import { Wrapper, StyledButton } from './App.styles';
 
 // Types
-export type CartItemType = {
+export type Product = {
   id: number;
   title: string;
   price: number;
