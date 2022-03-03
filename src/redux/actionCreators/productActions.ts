@@ -8,7 +8,7 @@ export const listProducts = () => {
       type: ActionType.PRODUCTS_LIST_REQUEST,
     });
     try {
-      const { data } = await api.get(
+      const { data }: any = await api.get(
         'https://fakestoreapi.com/products?limit=10'
       );
 
